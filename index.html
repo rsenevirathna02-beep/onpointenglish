@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>onpointenglish | 2027 Class Timetable & Registration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red: #d90429;
+      --red-dark: #9e001b;
+      --black: #111111;
+      --dark-card: #181818;
+      --white: #ffffff;
+      --bg: #f5f5f5;
+      --text: #161616;
+      --muted: #555555;
+      --border: #e4e4e4;
+      --shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Plus Jakarta Sans", "Noto Sans Sinhala", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* Top Bar */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(17, 17, 17, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--red);
+      color: var(--white);
+    }
+
+    .topbar-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--white);
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: 0.3px;
+    }
+
+    .brand-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 0 4px rgba(217, 4, 41, 0.25);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #eeeeee;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 7px 12px;
+      border-radius: 999px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--white);
+    }
+
+    .btn-wa-top {
+      background: var(--red);
+      color: var(--white) !important;
+      font-weight: 700 !important;
+    }
+
+    .btn-wa-top:hover {
+      background: var(--red-dark) !important;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background: var(--black);
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: relative;
+      min-height: 460px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-bg img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.34;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(95deg, rgba(17, 17, 17, 0.94) 0%, rgba(17, 17, 17, 0.78) 58%, rgba(217, 4, 41, 0.25) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 56px 20px;
+      width: 100%;
+    }
+
+    .badge-2027 {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.2;
+      max-width: 760px;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: #e6e6e6;
+      max-width: 680px;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.18s, background 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+      box-shadow: 0 8px 20px rgba(217, 4, 41, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--red-dark);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.32);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 48px 20px;
+    }
+
+    .section-block {
+      margin-bottom: 54px;
+      scroll-margin-top: 76px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: clamp(1.45rem, 2.6vw, 2rem);
+      font-weight: 800;
+      color: var(--black);
+      position: relative;
+      padding-bottom: 8px;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 56px;
+      height: 4px;
+      background: var(--red);
+      border-radius: 4px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Highlights / Venues */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--red);
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--red);
+      background: rgba(217, 4, 41, 0.08);
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-size: 1.18rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--black);
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Timetable Grid */
+    .timetable-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 22px;
+    }
+
+    .day-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .day-header {
+      background: var(--black);
+      color: var(--white);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid var(--red);
+    }
+
+    .day-header h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+
+    .day-venue {
+      font-size: 0.82rem;
+      font-weight: 700;
+      background: var(--red);
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .slot-list {
+      list-style: none;
+      padding: 14px 20px;
+    }
+
+    .slot-list li {
+      padding: 10px 0;
+      border-bottom: 1px dashed #e5e5e5;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .slot-list li:last-child {
+      border-bottom: none;
+    }
+
+    .slot-time {
+      font-weight: 800;
+      color: var(--red);
+      font-size: 0.9rem;
+    }
+
+    .slot-name {
+      font-weight: 700;
+      color: var(--black);
+      font-size: 0.98rem;
+    }
+
+    .slot-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* Gallery (7 Photos) */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .photo-card {
+      position: relative;
+      background: var(--black);
+      border-radius: 14px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      border: 2px solid transparent;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .photo-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--red);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 10px 12px;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.86));
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* Interactive Info Triggers */
+    .info-triggers {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .btn-dark {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .btn-dark:hover {
+      background: #292929;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--black);
+      color: var(--white);
+      border-top: 3px solid var(--red);
+      padding: 36px 20px;
+      text-align: center;
+    }
+
+    footer p {
+      color: #cccccc;
+      font-size: 0.92rem;
+      margin-bottom: 6px;
+    }
+
+    .footer-tagline {
+      color: var(--white);
+      font-weight: 700;
+      margin-top: 8px;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translate(-50%, 120px);
+      background: var(--black);
+      color: var(--white);
+      border: 1px solid var(--red);
+      border-left: 5px solid var(--red);
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+      z-index: 900;
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      max-width: 92vw;
+      text-align: center;
+    }
+
+    .toast.show {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+
+    /* Modal Backdrop & Dialog */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 1000;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--white);
+      color: var(--text);
+      border-radius: 18px;
+      max-width: 560px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      border-top: 5px solid var(--red);
+      animation: popIn 0.2s ease;
+    }
+
+    .modal-box.photo-modal {
+      background: var(--dark-card);
+      color: var(--white);
+      max-width: 780px;
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .modal-head {
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+    }
+
+    .modal-head h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+
+    .modal-close {
+      background: rgba(217, 4, 41, 0.12);
+      color: var(--red);
+      border: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+    }
+
+    .photo-modal .modal-close {
+      background: rgba(255, 255, 255, 0.14);
+      color: var(--white);
+    }
+
+    .modal-body {
+      padding: 20px;
+    }
+
+    .modal-body img {
+      width: 100%;
+      max-height: 62vh;
+      object-fit: contain;
+      border-radius: 10px;
+      background: #0d0d0d;
+      margin-bottom: 12px;
+    }
+
+    .modal-list {
+      padding-left: 18px;
+      margin: 10px 0 16px;
+    }
+
+    .modal-list li {
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 640px) {
+      .hero-bg {
+        min-height: 400px;
+      }
+      .nav-links a {
+        font-size: 0.82rem;
+        padding: 6px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="#top" class="brand">
+        <span class="brand-dot"></span>
+        <span>onpointenglish</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#venues">මධ්‍යස්ථාන</a>
+        <a href="#timetable">2027 කාලසටහන</a>
+        <a href="#gallery">පන්ති ඡායාරූප</a>
+        <a href="https://wa.me/94711716943?text=Hello%20onpointenglish%2C%20I%20would%20like%20to%20register%20for%202027%20English%20classes." target="_blank" rel="noopener" class="btn-wa-top">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="top" class="hero">
+    <div class="hero-bg">
+      <img src="hero-banner.JPG" alt="onpointenglish 2027 English Classes" />
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="badge-2027">2027 නව පන්ති ආරම්භය</span>
+        <h1>Grades 1 – 11 ඉංග්‍රීසි පන්ති — Theory, Revision, Paper &amp; Writing</h1>
+        <p>
+          දැනුම – ගොඩවෙල, Tera – අලව්ව සහ Online පන්ති සමඟින් සරල, පියවරෙන් පියවර ඉගෙනුම් ක්‍රමවේදයක්.
+        </p>
+        <div class="hero-actions">
+          <a href="#timetable" class="btn btn-primary">2027 කාලසටහන බලන්න</a>
+          <button type="button" class="btn btn-outline" data-open-modal="register">දැන්ම ලියාපදිංචි වන්න</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- Venues & Programs -->
+    <section id="venues" class="section-block" data-toast="පන්ති මධ්‍යස්ථාන: දැනුම - ගොඩවෙල, Tera - අලව්ව සහ Online">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">පන්ති මධ්‍යස්ථාන හා වැඩසටහන්</h2>
+          <p class="section-sub">1 සිට 11 ශ්‍රේණිය දක්වා සිසුන් සඳහා විශේෂිත පන්ති මාලාව</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <span class="card-tag">බ්‍රහස්පතින්දා &amp; සෙනසුරාදා</span>
+          <h3>දැනුම – ගොඩවෙල</h3>
+          <p>මූලික Theory, Revision, Paper Class සහ Reading &amp; Writing පුහුණුව සමඟින් සවිස්තරාත්මක ඉගැන්වීම්.</p>
+        </article>
+
+        <article class="card">
+          <span class="card-tag">ඉරිදා</span>
+          <h3>Tera – අලව්ව</h3>
+          <p>විභාග ඉලක්කගත Paper Practice, Grammar Patterns සහ Writing Skills වර්ධනය කරන පන්ති.</p>
+        </article>
+
+        <article class="card">
+          <span class="card-tag">Online Sessions</span>
+          <h3>Online ඉංග්‍රීසි පන්ති</h3>
+          <p>නිවසේ සිටම පහසුවෙන් සම්බන්ධ විය හැකි Live Theory, Revision සහ Writing Practice සැසි.</p>
+        </article>
+      </div>
+
+      <div class="info-triggers">
+        <button type="button" class="btn btn-dark" data-open-modal="programs">වැඩසටහන් විස්තර (Pop-up)</button>
+        <button type="button" class="btn btn-primary" data-open-modal="register">WhatsApp ලියාපදිංචිය</button>
+      </div>
+    </section>
+
+    <!-- 2027 Timetable -->
+    <section id="timetable" class="section-block" data-toast="2027 කාලසටහන — දැනුම ගොඩවෙල, Tera අලව්ව & Online">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">2027 පන්ති කාලසටහන</h2>
+          <p class="section-sub">සතියේ දින අනුව වෙන් කර ඇති පන්ති වේලාවන්</p>
+        </div>
+      </div>
+
+      <div class="timetable-grid">
+        <div class="day-card">
+          <div class="day-header">
+            <h3>බ්‍රහස්පතින්දා (Thursday)</h3>
+            <span class="day-venue">දැනුම – ගොඩවෙල</span>
+          </div>
+          <ul class="slot-list">
+            <li>
+              <span class="slot-time">Grades 1 – 5</span>
+              <span class="slot-name">Foundation &amp; Scholarship English</span>
+              <span class="slot-note">මූලික කියවීම, ලිවීම සහ වචන මාලාව</span>
+            </li>
+            <li>
+              <span class="slot-time">Grades 6 – 9</span>
+              <span class="slot-name">Theory &amp; Grammar Patterns</span>
+              <span class="slot-note">වාක්‍ය රටා සහ පෙළපොත් පාඩම්</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="day-card">
+          <div class="day-header">
+            <h3>සෙනසුරාදා (Saturday)</h3>
+            <span class="day-venue">දැනුම – ගොඩවෙල</span>
+          </div>
+          <ul class="slot-list">
+            <li>
+              <span class="slot-time">Grades 6 – 11</span>
+              <span class="slot-name">Paper Class &amp; Revision</span>
+              <span class="slot-note">ප්‍රශ්න පත්‍ර සාකච්ඡා සහ පුනරීක්ෂණ</span>
+            </li>
+            <li>
+              <span class="slot-time">Reading &amp; Writing</span>
+              <span class="slot-name">Writing Practice Workshop</span>
+              <span class="slot-note">රචනා, ඡේද ලිවීම සහ කියවීමේ පුහුණුව</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="day-card">
+          <div class="day-header">
+            <h3>ඉරිදා (Sunday)</h3>
+            <span class="day-venue">Tera – අලව්ව</span>
+          </div>
+          <ul class="slot-list">
+            <li>
+              <span class="slot-time">Grades 1 – 11</span>
+              <span class="slot-name">Theory, Revision &amp; Paper Class</span>
+              <span class="slot-note">සියලු ශ්‍රේණි සඳහා සැලසුම්ගත පන්ති</span>
+            </li>
+            <li>
+              <span class="slot-time">Online Batch</span>
+              <span class="slot-name">Online Theory &amp; Writing</span>
+              <span class="slot-note">දුරස්ථ සිසුන් සඳහා සජීවී පන්ති</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 Photos Gallery -->
+    <section id="gallery" class="section-block" data-toast="පන්ති ඡායාරූප — විශාල කර බැලීමට ඡායාරූපය මත tap කරන්න">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">පන්ති ඡායාරූප එකතුව</h2>
+          <p class="section-sub">ඕනෑම ඡායාරූපයක් tap කර විශාලව (Modal Pop-up) නරඹන්න</p>
+        </div>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="photo-card" data-photo="photo-1.JPG" data-caption="Photo 1 — Strategic Thinking &amp; Focus">
+          <img src="photo-1.JPG" alt="Photo 1" loading="lazy" />
+          <div class="photo-caption">Photo 1 — Focus &amp; Strategy</div>
+        </div>
+
+        <div class="photo-card" data-photo="photo-2.JPG" data-caption="Photo 2 — Roshana Senevirathna (onpointenglish)">
+          <img src="photo-2.JPG" alt="Photo 2" loading="lazy" />
+          <div class="photo-caption">Photo 2 — Instructor Portrait</div>
+        </div>
+
+        <div class="photo-card" data-photo="photo-3.JPG" data-caption="Photo 3 — Classroom Learning Session">
+          <img src="photo-3.JPG" alt="Photo 3" loading="lazy" />
+          <div class="photo-caption">Photo 3 — Classroom Session</div>
+        </div>
+
+        <div class="photo-card" data-photo="photo-4.JPG" data-caption="Photo 4 — Interactive Class Instruction">
+          <img src="photo-4.JPG" alt="Photo 4" loading="lazy" />
+          <div class="photo-caption">Photo 4 — Class Instruction</div>
+        </div>
+
+        <div class="photo-card" data-photo="photo-5.JPG" data-caption="Photo 5 — Individual Guidance &amp; Support">
+          <img src="photo-5.JPG" alt="Photo 5" loading="lazy" />
+          <div class="photo-caption">Photo 5 — Student Guidance</div>
+        </div>
+
+        <div class="photo-card" data-photo="photo-6.JPG" data-caption="Photo 6 — Writing &amp; Paper Practice">
+          <img src="photo-6.JPG" alt="Photo 6" loading="lazy" />
+          <div class="photo-caption">Photo 6 — Writing Practice</div>
+        </div>
+
+        <div class="photo-card" data-photo="photo-7.JPG" data-caption="Photo 7 — Active Student Participation">
+          <img src="photo-7.JPG" alt="Photo 7" loading="lazy" />
+          <div class="photo-caption">Photo 7 — Student Participation</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p><strong>onpointenglish</strong> — Roshana Senevirathna</p>
+    <p>දුරකථන / WhatsApp: <strong>071 171 6943</strong></p>
+    <p class="footer-tagline">හීනවලට සෙනෙහසින් ❤️ ENGLISH</p>
+  </footer>
+
+  <!-- Scroll Toast -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- Content Modal -->
+  <div id="contentModal" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="contentModalTitle">
+      <div class="modal-head">
+        <h3 id="contentModalTitle">විස්තර</h3>
+        <button type="button" class="modal-close" id="closeContentModal" aria-label="Close">×</button>
+      </div>
+      <div class="modal-body" id="contentModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Photo Modal -->
+  <div id="photoModal" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-box photo-modal" role="dialog" aria-modal="true" aria-labelledby="photoModalTitle">
+      <div class="modal-head">
+        <h3 id="photoModalTitle">ඡායාරූපය</h3>
+        <button type="button" class="modal-close" id="closePhotoModal" aria-label="Close">×</button>
+      </div>
+      <div class="modal-body">
+        <img id="photoModalImg" src="" alt="" />
+        <p id="photoModalCaption"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Scroll-triggered Section Toast Notifications
+    const toastEl = document.getElementById("toast");
+    let toastTimer = null;
+
+    function showToast(message) {
+      if (!message) return;
+      toastEl.textContent = message;
+      toastEl.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toastEl.classList.remove("show");
+      }, 2800);
+    }
+
+    const sections = document.querySelectorAll("[data-toast]");
+    const shownSections = new Set();
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !shownSections.has(entry.target.id)) {
+              shownSections.add(entry.target.id);
+              showToast(entry.target.getAttribute("data-toast"));
+            }
+          });
+        },
+        { threshold: 0.35 }
+      );
+      sections.forEach((sec) => observer.observe(sec));
+    }
+
+    // Content Modals (Programs & WhatsApp Registration)
+    const contentModal = document.getElementById("contentModal");
+    const contentModalTitle = document.getElementById("contentModalTitle");
+    const contentModalBody = document.getElementById("contentModalBody");
+    const closeContentModal = document.getElementById("closeContentModal");
+
+    function openContentModal(type) {
+      if (type === "programs") {
+        contentModalTitle.textContent = "2027 පන්ති වැඩසටහන් (Grades 1 – 11)";
+        contentModalBody.innerHTML = `
+          <p>සෑම ශ්‍රේණියකටම ගැළපෙන පරිදි පහත වැඩසටහන් ක්‍රියාත්මක වේ:</p>
+          <ul class="modal-list">
+            <li><strong>Theory Classes:</strong> මූලික ඉංග්‍රීසි ව්‍යාකරණ සහ වාක්‍ය රටා</li>
+            <li><strong>Revision Classes:</strong> විභාගයට පෙර සම්පූර්ණ පුනරීක්ෂණ</li>
+            <li><strong>Paper Classes:</strong> ආදර්ශ සහ පසුගිය විභාග ප්‍රශ්න පත්‍ර</li>
+            <li><strong>Reading &amp; Writing Practice:</strong> කියවීම, ඡේද සහ රචනා පුහුණුව</li>
+            <li><strong>Scholarship &amp; Online:</strong> ශිෂ්‍යත්ව සහ Online සැසි</li>
+          </ul>
+          <a href="#timetable" class="btn btn-primary" onclick="closeModal(contentModal)">කාලසටහන බලන්න</a>
+        `;
+      } else {
+        contentModalTitle.textContent = "2027 පන්ති සඳහා ලියාපදිංචි වීම";
+        contentModalBody.innerHTML = `
+          <p>ශිෂ්‍යයාගේ නම, ශ්‍රේණිය (Grade) සහ කැමති මධ්‍යස්ථානය (දැනුම - ගොඩවෙල / Tera - අලව්ව / Online) WhatsApp මඟින් එවන්න.</p>
+          <p style="margin:12px 0;"><strong>WhatsApp / දුරකථන:</strong> 071 171 6943</p>
+          <a href="https://wa.me/94711716943?text=Hello%20onpointenglish%2C%20I%20want%20to%20register%20for%202027%20classes." target="_blank" rel="noopener" class="btn btn-primary">WhatsApp පණිවිඩයක් යවන්න</a>
+        `;
+      }
+      contentModal.classList.add("open");
+      contentModal.setAttribute("aria-hidden", "false");
+    }
+
+    function closeModal(modal) {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+    }
+
+    document.querySelectorAll("[data-open-modal]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        openContentModal(btn.getAttribute("data-open-modal"));
+      });
+    });
+
+    closeContentModal.addEventListener("click", () => closeModal(contentModal));
+    contentModal.addEventListener("click", (e) => {
+      if (e.target === contentModal) closeModal(contentModal);
+    });
+
+    // Photo Modal (7 Photos)
+    const photoModal = document.getElementById("photoModal");
+    const photoModalTitle = document.getElementById("photoModalTitle");
+    const photoModalImg = document.getElementById("photoModalImg");
+    const photoModalCaption = document.getElementById("photoModalCaption");
+    const closePhotoModal = document.getElementById("closePhotoModal");
+
+    document.querySelectorAll(".photo-card").forEach((card) => {
+      card.addEventListener("click", () => {
+        const src = card.getAttribute("data-photo");
+        const caption = card.getAttribute("data-caption");
+        photoModalTitle.textContent = caption;
+        photoModalImg.src = src;
+        photoModalImg.alt = caption;
+        photoModalCaption.textContent = caption;
+        photoModal.classList.add("open");
+        photoModal.setAttribute("aria-hidden", "false");
+      });
+    });
+
+    closePhotoModal.addEventListener("click", () => closeModal(photoModal));
+    photoModal.addEventListener("click", (e) => {
+      if (e.target === photoModal) closeModal(photoModal);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeModal(contentModal);
+        closeModal(photoModal);
+      }
+    });
+  </script>
+</body>
+</html>
