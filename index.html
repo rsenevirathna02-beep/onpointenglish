@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>onpointenglish | 2027 Class Timetable & Registration</title>
+  <meta property="og:title" content="onpointenglish | 2027 පන්ති කාලසටහන" />
+  <meta property="og:description" content="දැනුම - ගොඩවෙල සහ Tera - අලව්ව 2027 ඉංග්‍රීසි පන්ති කාලසටහන සහ ලියාපදිංචිය." />
+  <meta property="og:image" content="https://onpointenglish.vercel.app/hero-banner.JPG" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red: #d90429;
+      --red-dark: #9e001b;
+      --black: #111111;
+      --dark-card: #181818;
+      --white: #ffffff;
+      --bg: #f5f5f5;
+      --text: #161616;
+      --muted: #555555;
+      --border: #e4e4e4;
+      --shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Plus Jakarta Sans", "Noto Sans Sinhala", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(17, 17, 17, 0.96); backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--red); color: var(--white);
+    }
+    .topbar-inner {
+      max-width: 1160px; margin: 0 auto; padding: 12px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 14px; flex-wrap: wrap;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--white);
+      font-weight: 800; font-size: 1.15rem;
+    }
+    .brand-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--red); box-shadow: 0 0 0 4px rgba(217, 4, 41, 0.25);
+    }
+    .nav-links { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .nav-links a {
+      color: #eee; text-decoration: none; font-size: 0.9rem;
+      font-weight: 600; padding: 7px 12px; border-radius: 999px;
+    }
+    .nav-links a:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+    .btn-wa-top { background: var(--red); color: #fff !important; font-weight: 700 !important; }
+    .hero { position: relative; background: var(--black); color: var(--white); overflow: hidden; }
+    .hero-bg { position: relative; min-height: 440px; display: flex; align-items: center; }
+    .hero-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.34; }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(95deg, rgba(17,17,17,0.94) 0%, rgba(17,17,17,0.78) 58%, rgba(217,4,41,0.25) 100%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 1160px; margin: 0 auto; padding: 52px 20px; width: 100%; }
+    .badge-2027 {
+      display: inline-block; background: var(--red); color: #fff;
+      font-weight: 800; font-size: 0.85rem; padding: 6px 14px;
+      border-radius: 999px; margin-bottom: 14px;
+    }
+    .hero h1 { font-size: clamp(1.8rem, 4vw, 2.9rem); font-weight: 800; line-height: 1.2; max-width: 760px; margin-bottom: 12px; }
+    .hero p { font-size: 1.02rem; color: #e6e6e6; max-width: 680px; margin-bottom: 22px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 0.95rem;
+      text-decoration: none; border: none; cursor: pointer;
+    }
+    .btn-primary { background: var(--red); color: #fff; }
+    .btn-outline { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.32); }
+    .btn-dark { background: var(--black); color: #fff; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 44px 20px; }
+    .section-block { margin-bottom: 50px; scroll-margin-top: 76px; }
+    .section-head { margin-bottom: 20px; }
+    .section-title { font-size: clamp(1.4rem, 2.6vw, 1.95rem); font-weight: 800; color: var(--black); position: relative; padding-bottom: 8px; }
+    .section-title::after { content: ""; position: absolute; left: 0; bottom: 0; width: 56px; height: 4px; background: var(--red); border-radius: 4px; }
+    .section-sub { color: var(--muted); font-size: 0.95rem; margin-top: 4px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
+    .card-tag { display: inline-block; font-size: 0.78rem; font-weight: 800; color: var(--red); background: rgba(217,4,41,0.08); padding: 4px 10px; border-radius: 999px; margin-bottom: 8px; }
+    .card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 6px; color: var(--black); }
+    .card p { color: var(--muted); font-size: 0.94rem; }
+    .timetable-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 22px; }
+    .day-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow); }
+    .day-header { background: var(--black); color: #fff; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 10px; border-bottom: 3px solid var(--red); }
+    .day-header h3 { font-size: 1.1rem; font-weight: 800; }
+    .day-venue { font-size: 0.8rem; font-weight: 700; background: var(--red); padding: 4px 10px; border-radius: 999px; }
+    .group-label { background: #fafafa; color: var(--black); font-weight: 800; font-size: 0.88rem; padding: 8px 20px; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+    .group-label:first-child { border-top: none; }
+    .slot-list { list-style: none; padding: 8px 20px 12px; }
+    .slot-list li { padding: 8px 0; border-bottom: 1px dashed #e5e5e5; display: flex; flex-direction: column; gap: 2px; }
+    .slot-list li:last-child { border-bottom: none; }
+    .slot-time { font-weight: 800; color: var(--red); font-size: 0.92rem; }
+    .slot-name { font-weight: 700; color: var(--black); font-size: 0.96rem; }
+    .reg-card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); border-top: 4px solid var(--red); padding: 24px; box-shadow: var(--shadow); }
+    .reg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-bottom: 16px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label { font-size: 0.9rem; font-weight: 700; color: var(--black); }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: 11px 13px; border-radius: 10px;
+      border: 1px solid #d4d4d4; background: #fafafa; color: var(--text);
+      font-family: inherit; font-size: 0.95rem;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: none; border-color: var(--red); background: #fff;
+    }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+    .photo-card { position: relative; background: var(--black); border-radius: 14px; overflow: hidden; aspect-ratio: 4 / 3; cursor: pointer; box-shadow: var(--shadow); }
+    .photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 10px 12px; background: linear-gradient(transparent, rgba(0,0,0,0.86)); color: #fff; font-size: 0.84rem; font-weight: 600; }
+    .info-triggers { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+    footer { background: var(--black); color: #fff; border-top: 3px solid var(--red); padding: 34px 20px; text-align: center; }
+    footer p { color: #ccc; font-size: 0.92rem; margin-bottom: 6px; }
+    .footer-tagline { color: #fff; font-weight: 700; margin-top: 8px; }
+    .toast {
+      position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 120px);
+      background: var(--black); color: #fff; border: 1px solid var(--red); border-left: 5px solid var(--red);
+      padding: 12px 18px; border-radius: 12px; font-size: 0.9rem; font-weight: 600;
+      z-index: 900; opacity: 0; transition: transform 0.3s ease, opacity 0.3s ease; max-width: 92vw; text-align: center;
+    }
+    .toast.show { transform: translate(-50%, 0); opacity: 1; }
+    .modal-backdrop {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.78); backdrop-filter: blur(4px);
+      display: none; align-items: center; justify-content: center; padding: 18px; z-index: 1000;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-box { background: #fff; color: var(--text); border-radius: 18px; max-width: 560px; width: 100%; max-height: 88vh; overflow-y: auto; border-top: 5px solid var(--red); }
+    .modal-box.photo-modal { background: var(--dark-card); color: #fff; max-width: 780px; }
+    .modal-head { padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(128,128,128,0.2); }
+    .modal-head h3 { font-size: 1.12rem; font-weight: 800; }
+    .modal-close { background: rgba(217,4,41,0.12); color: var(--red); border: none; width: 34px; height: 34px; border-radius: 50%; font-size: 1.2rem; font-weight: 800; cursor: pointer; }
+    .photo-modal .modal-close { background: rgba(255,255,255,0.14); color: #fff; }
+    .modal-body { padding: 20px; }
+    .modal-body img { width: 100%; max-height: 62vh; object-fit: contain; border-radius: 10px; background: #0d0d0d; margin-bottom: 12px; }
+    .modal-list { padding-left: 18px; margin: 10px 0 16px; }
+    .modal-list li { margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="#top" class="brand"><span class="brand-dot"></span><span>onpointenglish</span></a>
+      <nav class="nav-links">
+        <a href="#venues">මධ්‍යස්ථාන</a>
+        <a href="#timetable">2027 කාලසටහන</a>
+        <a href="#register">ලියාපදිංචිය</a>
+        <a href="#gallery">ඡායාරූප</a>
+        <a href="https://wa.me/94711716943?text=Hello%20onpointenglish%2C%20I%20would%20like%20to%20register%20for%202027%20English%20classes." target="_blank" rel="noopener" class="btn-wa-top">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="top" class="hero">
+    <div class="hero-bg">
+      <img src="hero-banner.JPG" alt="onpointenglish 2027 English Classes" />
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="badge-2027">2027 නව පන්ති ආරම්භය</span>
+        <h1>onpointenglish — 2027 පන්ති කාලසටහන</h1>
+        <p>දැනුම - ගොඩවෙල සහ Tera - අලව්ව මධ්‍යස්ථානවල Theory Class, Paper Class, Reading &amp; Writing Class සහ English for Scholarship පන්ති.</p>
+        <div class="hero-actions">
+          <a href="#timetable" class="btn btn-primary">2027 කාලසටහන බලන්න</a>
+          <a href="#register" class="btn btn-outline">ශිෂ්‍ය ලියාපදිංචිය</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section id="venues" class="section-block" data-toast="පන්ති මධ්‍යස්ථාන: දැනුම - ගොඩවෙල සහ Tera - අලව්ව">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">පන්ති මධ්‍යස්ථාන</h2>
+          <p class="section-sub">2027 නව වර්ෂය සඳහා පන්ති පැවැත්වෙන මධ්‍යස්ථාන</p>
+        </div>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <span class="card-tag">අඟහරුවාදා / බ්‍රහස්පතින්දා / සෙනසුරාදා</span>
+          <h3>දැනුම - ගොඩවෙල</h3>
+          <p>Theory Class (Grades 6–11), English for Scholarship (Grades 1/5), 09/10/11 Paper Class සහ 6/7/8 Reading &amp; Writing Class.</p>
+        </article>
+        <article class="card">
+          <span class="card-tag">ඉරිදා</span>
+          <h3>Tera - අලව්ව</h3>
+          <p>Theory (Grades 6–11) සහ Grades 10/11 Paper Class.</p>
+        </article>
+      </div>
+      <div class="info-triggers">
+        <button type="button" class="btn btn-dark" data-open-modal="programs">වැඩසටහන් විස්තර (Pop-up)</button>
+        <a href="#register" class="btn btn-primary">WhatsApp Form පුරවන්න</a>
+      </div>
+    </section>
+
+    <section id="timetable" class="section-block" data-toast="2027 කාල සටහන — දැනුම - ගොඩවෙල & Tera - අලව්ව">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">2027 කාල සටහන</h2>
+          <p class="section-sub">දැනුම - ගොඩවෙල සහ Tera - අලව්ව පන්ති වේලාවන්</p>
+        </div>
+      </div>
+      <div class="timetable-grid">
+        <div class="day-card">
+          <div class="day-header">
+            <h3>දැනුම - ගොඩවෙල</h3>
+            <span class="day-venue">2027 Timetable</span>
+          </div>
+          <div class="group-label">Theory Class</div>
+          <ul class="slot-list">
+            <li><span class="slot-time">සෙන. 11:00am - 01:00pm</span><span class="slot-name">Grade 6</span></li>
+            <li><span class="slot-time">අඟහරුවාදා 05:30pm - 07:30pm</span><span class="slot-name">Grade 7</span></li>
+            <li><span class="slot-time">සෙන. 07:00am - 09:00am</span><span class="slot-name">Grade 8</span></li>
+            <li><span class="slot-time">බ්‍රහස්පතින්දා 05:30pm - 07:30pm</span><span class="slot-name">Grade 9</span></li>
+            <li><span class="slot-time">සෙන. 09:00am - 11:00am</span><span class="slot-name">Grade 10</span></li>
+            <li><span class="slot-time">සෙන. 06:00pm - 10:00pm</span><span class="slot-name">Grade 11</span></li>
+          </ul>
+          <div class="group-label">English for Scholarship</div>
+          <ul class="slot-list">
+            <li><span class="slot-time">සෙන. 01:00pm - 03:00pm</span><span class="slot-name">Grades 1/5</span></li>
+          </ul>
+          <div class="group-label">09/10/11 Paper Class</div>
+          <ul class="slot-list">
+            <li><span class="slot-time">සෙන. 03:00pm - 05:00pm</span><span class="slot-name">09/10/11 Paper Class</span></li>
+          </ul>
+          <div class="group-label">6/7/8 Reading &amp; Writing Class</div>
+          <ul class="slot-list">
+            <li><span class="slot-time">සෙන. 05:00pm - 06:00pm</span><span class="slot-name">6/7/8 Reading &amp; Writing Class</span></li>
+          </ul>
+        </div>
+
+        <div class="day-card">
+          <div class="day-header">
+            <h3>Tera - අලව්ව</h3>
+            <span class="day-venue">ඉරිදා</span>
+          </div>
+          <div class="group-label">Theory</div>
+          <ul class="slot-list">
+            <li><span class="slot-time">ඉරිදා 07:30 - 09:30am</span><span class="slot-name">Grade 11</span></li>
+            <li><span class="slot-time">ඉරිදා 09:30 - 11:30am</span><span class="slot-name">Grade 10</span></li>
+            <li><span class="slot-time">ඉරිදා 11:30am - 01:30pm</span><span class="slot-name">Grade 09</span></li>
+            <li><span class="slot-time">ඉරිදා 01:30 - 03:30pm</span><span class="slot-name">Grade 08</span></li>
+            <li><span class="slot-time">ඉරිදා 03:30 - 05:30pm</span><span class="slot-name">Grade 07</span></li>
+            <li><span class="slot-time">ඉරිදා 05:30 - 07:30pm</span><span class="slot-name">Grade 06</span></li>
+          </ul>
+          <div class="group-label">Paper Class</div>
+          <ul class="slot-list">
+            <li><span class="slot-time">ඉරිදා 07:30 - 09:30pm</span><span class="slot-name">Grades 10/11</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="register" class="section-block" data-toast="ශිෂ්‍ය ලියාපදිංචිය — විස්තර පුරවා WhatsApp වෙත යවන්න">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">ශිෂ්‍ය ලියාපදිංචිය (WhatsApp)</h2>
+          <p class="section-sub">පහත තොරතුරු පුරවා "WhatsApp වෙත යවන්න" ඔබන්න</p>
+        </div>
+      </div>
+      <form id="waRegForm" class="reg-card">
+        <div class="reg-grid">
+          <div class="field">
+            <label for="stName">ශිෂ්‍යයාගේ සම්පූර්ණ නම *</label>
+            <input type="text" id="stName" required placeholder="උදා: Kasun Perera" />
+          </div>
+          <div class="field">
+            <label for="stGrade">ශ්‍රේණිය (Grade) *</label>
+            <select id="stGrade" required>
+              <option value="">තෝරන්න</option>
+              <option value="Grades 1/5 (Scholarship)">Grades 1/5 (Scholarship)</option>
+              <option value="Grade 6">Grade 6</option>
+              <option value="Grade 7">Grade 7</option>
+              <option value="Grade 8">Grade 8</option>
+              <option value="Grade 9">Grade 9</option>
+              <option value="Grade 10">Grade 10</option>
+              <option value="Grade 11">Grade 11</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="stCenter">මධ්‍යස්ථානය *</label>
+            <select id="stCenter" required>
+              <option value="">තෝරන්න</option>
+              <option value="දැනුම - ගොඩවෙල">දැනුම - ගොඩවෙල</option>
+              <option value="Tera - අලව්ව">Tera - අලව්ව</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="stClassType">පන්ති වර්ගය *</label>
+            <select id="stClassType" required>
+              <option value="">තෝරන්න</option>
+              <option value="Theory Class">Theory Class</option>
+              <option value="English for Scholarship">English for Scholarship</option>
+              <option value="Paper Class">Paper Class</option>
+              <option value="6/7/8 Reading & Writing Class">6/7/8 Reading &amp; Writing Class</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="stPhone">දුරකථන / WhatsApp අංකය *</label>
+            <input type="tel" id="stPhone" required placeholder="07X XXX XXXX" />
+          </div>
+          <div class="field">
+            <label for="stSchool">පාසල (අත්‍යවශ්‍ය නොවේ)</label>
+            <input type="text" id="stSchool" placeholder="පාසලේ නම" />
+          </div>
+        </div>
+        <div class="field" style="margin-bottom: 16px;">
+          <label for="stNote">අමතර සටහන් (අත්‍යවශ්‍ය නොවේ)</label>
+          <textarea id="stNote" rows="2" placeholder="වෙනත් විස්තරයක් ඇත්නම් මෙහි ලියන්න"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">WhatsApp වෙත යවන්න (071 171 6943)</button>
+      </form>
+    </section>
+    <section id="gallery" class="section-block" data-toast="පන්ති ඡායාරූප — විශාල කර බැලීමට ඡායාරූපය මත tap කරන්න">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">පන්ති ඡායාරූප එකතුව</h2>
+          <p class="section-sub">ඕනෑම ඡායාරූපයක් tap කර විශාලව (Modal Pop-up) නරඹන්න</p>
+        </div>
+      </div>
+      <div class="gallery-grid">
+        <div class="photo-card" data-photo="photo-1.JPG" data-caption="Photo 1 — Strategic Thinking &amp; Focus"><img src="photo-1.JPG" alt="Photo 1" loading="lazy" /><div class="photo-caption">Photo 1 — Focus &amp; Strategy</div></div>
+        <div class="photo-card" data-photo="photo-2.JPG" data-caption="Photo 2 — Roshana Senevirathna (onpointenglish)"><img src="photo-2.JPG" alt="Photo 2" loading="lazy" /><div class="photo-caption">Photo 2 — Instructor Portrait</div></div>
+        <div class="photo-card" data-photo="photo-3.JPG" data-caption="Photo 3 — Classroom Learning Session"><img src="photo-3.JPG" alt="Photo 3" loading="lazy" /><div class="photo-caption">Photo 3 — Classroom Session</div></div>
+        <div class="photo-card" data-photo="photo-4.JPG" data-caption="Photo 4 — Interactive Class Instruction"><img src="photo-4.JPG" alt="Photo 4" loading="lazy" /><div class="photo-caption">Photo 4 — Class Instruction</div></div>
+        <div class="photo-card" data-photo="photo-5.JPG" data-caption="Photo 5 — Individual Guidance &amp; Support"><img src="photo-5.JPG" alt="Photo 5" loading="lazy" /><div class="photo-caption">Photo 5 — Student Guidance</div></div>
+        <div class="photo-card" data-photo="photo-6.JPG" data-caption="Photo 6 — Writing &amp; Paper Practice"><img src="photo-6.JPG" alt="Photo 6" loading="lazy" /><div class="photo-caption">Photo 6 — Writing Practice</div></div>
+        <div class="photo-card" data-photo="photo-7.JPG" data-caption="Photo 7 — Active Student Participation"><img src="photo-7.JPG" alt="Photo 7" loading="lazy" /><div class="photo-caption">Photo 7 — Student Participation</div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>onpointenglish</strong> — Roshana Senevirathna</p>
+    <p>දුරකථන / WhatsApp: <strong>071 171 6943</strong></p>
+    <p class="footer-tagline">හීනවලට සෙනෙහසින් ❤️ ENGLISH</p>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <div id="contentModal" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="contentModalTitle">
+      <div class="modal-head">
+        <h3 id="contentModalTitle">විස්තර</h3>
+        <button type="button" class="modal-close" id="closeContentModal" aria-label="Close">×</button>
+      </div>
+      <div class="modal-body" id="contentModalBody"></div>
+    </div>
+  </div>
+
+  <div id="photoModal" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-box photo-modal" role="dialog" aria-modal="true" aria-labelledby="photoModalTitle">
+      <div class="modal-head">
+        <h3 id="photoModalTitle">ඡායාරූපය</h3>
+        <button type="button" class="modal-close" id="closePhotoModal" aria-label="Close">×</button>
+      </div>
+      <div class="modal-body">
+        <img id="photoModalImg" src="" alt="" />
+        <p id="photoModalCaption"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const toastEl = document.getElementById("toast");
+    let toastTimer = null;
+    function showToast(msg) {
+      if (!msg) return;
+      toastEl.textContent = msg;
+      toastEl.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2800);
+    }
+    const sections = document.querySelectorAll("[data-toast]");
+    const shownSections = new Set();
+    if ("IntersectionObserver" in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting && !shownSections.has(en.target.id)) {
+            shownSections.add(en.target.id);
+            showToast(en.target.getAttribute("data-toast"));
+          }
+        });
+      }, { threshold: 0.35 });
+      sections.forEach((s) => obs.observe(s));
+    }
+
+    const waForm = document.getElementById("waRegForm");
+    if (waForm) {
+      waForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("stName").value.trim();
+        const grade = document.getElementById("stGrade").value;
+        const center = document.getElementById("stCenter").value;
+        const classType = document.getElementById("stClassType").value;
+        const phone = document.getElementById("stPhone").value.trim();
+        const school = document.getElementById("stSchool").value.trim();
+        const note = document.getElementById("stNote").value.trim();
+
+        const lines = [
+          "*2027 onpointenglish — ශිෂ්‍ය ලියාපදිංචිය*",
+          "නම: " + name,
+          "ශ්‍රේණිය: " + grade,
+          "මධ්‍යස්ථානය: " + center,
+          "පන්ති වර්ගය: " + classType,
+          "දුරකථන / WhatsApp: " + phone
+        ];
+        if (school) lines.push("පාසල: " + school);
+        if (note) lines.push("සටහන: " + note);
+
+        const waUrl = "https://wa.me/94711716943?text=" + encodeURIComponent(lines.join("\n"));
+        window.open(waUrl, "_blank", "noopener");
+      });
+    }
+
+    const contentModal = document.getElementById("contentModal");
+    const contentModalTitle = document.getElementById("contentModalTitle");
+    const contentModalBody = document.getElementById("contentModalBody");
+    const closeContentModal = document.getElementById("closeContentModal");
+
+    function openContentModal(type) {
+      if (type === "programs") {
+        contentModalTitle.textContent = "2027 පන්ති වැඩසටහන්";
+        contentModalBody.innerHTML = `
+          <p>දැනුම - ගොඩවෙල සහ Tera - අලව්ව මධ්‍යස්ථානවල පැවැත්වෙන පන්ති:</p>
+          <ul class="modal-list">
+            <li><strong>Theory Class:</strong> Grades 6 – 11 (දැනුම - ගොඩවෙල &amp; Tera - අලව්ව)</li>
+            <li><strong>English for Scholarship:</strong> Grades 1/5 (සෙන. 01:00pm - 03:00pm • දැනුම - ගොඩවෙල)</li>
+            <li><strong>Paper Class:</strong> 09/10/11 (දැනුම - ගොඩවෙල) &amp; Grades 10/11 (Tera - අලව්ව)</li>
+            <li><strong>Reading &amp; Writing Class:</strong> 6/7/8 (සෙන. 05:00pm - 06:00pm • දැනුම - ගොඩවෙල)</li>
+          </ul>
+          <a href="#timetable" class="btn btn-primary" onclick="closeModal(contentModal)">කාලසටහන බලන්න</a>
+        `;
+      }
+      contentModal.classList.add("open");
+      contentModal.setAttribute("aria-hidden", "false");
+    }
+
+    function closeModal(modal) {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+    }
+
+    document.querySelectorAll("[data-open-modal]").forEach((btn) => {
+      btn.addEventListener("click", () => openContentModal(btn.getAttribute("data-open-modal")));
+    });
+    closeContentModal.addEventListener("click", () => closeModal(contentModal));
+    contentModal.addEventListener("click", (e) => { if (e.target === contentModal) closeModal(contentModal); });
+
+    const photoModal = document.getElementById("photoModal");
+    const photoModalTitle = document.getElementById("photoModalTitle");
+    const photoModalImg = document.getElementById("photoModalImg");
+    const photoModalCaption = document.getElementById("photoModalCaption");
+    const closePhotoModal = document.getElementById("closePhotoModal");
+
+    document.querySelectorAll(".photo-card").forEach((card) => {
+      card.addEventListener("click", () => {
+        const src = card.getAttribute("data-photo");
+        const caption = card.getAttribute("data-caption");
+        photoModalTitle.textContent = caption;
+        photoModalImg.src = src;
+        photoModalImg.alt = caption;
+        photoModalCaption.textContent = caption;
+        photoModal.classList.add("open");
+        photoModal.setAttribute("aria-hidden", "false");
+      });
+    });
+    closePhotoModal.addEventListener("click", () => closeModal(photoModal));
+    photoModal.addEventListener("click", (e) => { if (e.target === photoModal) closeModal(photoModal); });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") { closeModal(contentModal); closeModal(photoModal); }
+    });
+  </script>
+</body>
+</html>
